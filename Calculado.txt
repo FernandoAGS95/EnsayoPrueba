@@ -1,0 +1,3 @@
+ Cliente: Debra 
+                                       su compra es de 10000 pesos
+                                       porcentaje de descuento es 50% da un total de 5000

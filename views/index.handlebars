@@ -1,0 +1,43 @@
+   <form action="/Buscar" method="post">
+   <div class="row">
+        <div class="col-sm-3">
+            <label for="">Tienda</label>
+            
+            <div class="form-group">
+                <select name="tienda"class="form-control">
+                    <option selected>Open this select menu</option>
+                    {{#each tiendas}}
+                    <option value={{this.store_name}}>{{this.store_name}}</option>
+                    {{/each}}
+                </select>
+                 
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <label for="">Categoria</label>
+            <div class="form-group">
+                <select name="categoria" class="form-control">
+                    <option selected>Open this select menu</option>
+                    {{#each categories}}
+                    <option value={{this.category_name}}>{{this.category_name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <label for="">Marca</label>
+            <div class="form-group">
+                <select name="marca" class="form-control">
+                     <option selected>Open this select menu</option>
+                    {{#each marca}}
+                    <option value={{this.brand_name}}>{{this.brand_name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-4">
+            <button  class="btn btn-primary">Primary</button>
+        </div>
+    </div>
+</form>
