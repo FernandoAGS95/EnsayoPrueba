@@ -26,10 +26,10 @@ app.get('/', async(req, res) => {
     try {
         const tiendas = await getTiendas();
         const categories = await getCategories();
-        const marca = await getMarca();
-        console.log('listado de tiendas',tiendas);
+        const brand = await getMarca();
+       
         
-        res.render('index', { tiendas,categories,marca });
+        res.render('index', { tiendas, categories, brand });
     } catch (e) {
         res.status(500).send({
             error: `Algo salio mal ${e}`,
@@ -40,9 +40,20 @@ app.get('/', async(req, res) => {
 
 app.post('/Buscar',async(req,res)=>{
     const { tienda, categoria, marca} = req.body;
-    console.log('body',req.body);
-    console.log('Tienda ********************',tienda);
+    // console.log('body',req.body);
+    // console.log('Tienda ********************',tienda);
+    // console.log('categoria ********************',categoria);
+    // console.log('marca ********************',marca);
+    const tiendas = await getTiendas();
+    const categories = await getCategories();
+    const brand = await getMarca();
+   
     const busqueda = await getSuperComplex(tienda,categoria,marca);
+
+    console.log('busqueda',busqueda);
+    res.render('index', { tiendas, categories, brand, busqueda });
+
+    
     
 
 })

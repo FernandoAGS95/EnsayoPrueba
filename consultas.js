@@ -22,6 +22,9 @@ const getMarca =async()=>{
     return result.rows;
 }
 const getSuperComplex = async(tienda,categoria,marca)=>{
+    console.log('Tienda el query',tienda);
+    console.log('categoria el query',categoria);
+    console.log('marca el query',marca);
     const result = await pool.query(`SELECT b.store_name, c.product_id,c.product_name,a.quantity
 
     from stocks as a
@@ -37,10 +40,10 @@ const getSuperComplex = async(tienda,categoria,marca)=>{
     join brands as e 
     on e.brand_id = c.brand_id
     
-    where b.store_name="${tienda}"
-    AND   d.category_name="${categoria}"
-    AND   e.brand_name="${marca}"`)
-    console.log('Dentro de consulta',result)
+    where b.store_name ='${tienda}'
+    AND   d.category_name ='${categoria}'
+    AND   e.brand_name = '${marca}'`)
+    
     return result.rows;
 }
 

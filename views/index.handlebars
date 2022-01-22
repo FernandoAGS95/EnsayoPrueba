@@ -5,9 +5,9 @@
             
             <div class="form-group">
                 <select name="tienda"class="form-control">
-                    <option selected>Open this select menu</option>
+                    
                     {{#each tiendas}}
-                    <option value={{this.store_name}}>{{this.store_name}}</option>
+                    <option  value="{{this.store_name}}">{{this.store_name }}</option>
                     {{/each}}
                 </select>
                  
@@ -20,7 +20,7 @@
                 <select name="categoria" class="form-control">
                     <option selected>Open this select menu</option>
                     {{#each categories}}
-                    <option value={{this.category_name}}>{{this.category_name}}</option>
+                    <option value="{{this.category_name}}">{{this.category_name}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -30,8 +30,8 @@
             <div class="form-group">
                 <select name="marca" class="form-control">
                      <option selected>Open this select menu</option>
-                    {{#each marca}}
-                    <option value={{this.brand_name}}>{{this.brand_name}}</option>
+                    {{#each brand}}
+                    <option value="{{this.brand_name}}">{{this.brand_name}}</option>
                     {{/each}}
                 </select>
             </div>
