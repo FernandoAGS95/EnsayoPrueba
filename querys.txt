@@ -1,0 +1,58 @@
+-- Consulta-- listado de productos con sus precios, de aquellos productos cuyo modelo es 2016, ordenado alfabéticamente por nombre
+Select a.product_id, a.product_name , a.model_year, a.list_price 
+from products as a
+where a.model_year = 2016
+order by a.product_name ASC
+
+-- Consulta- inventario de productos para mujeres (aquellos que dice Ladies en el nombre) ordenado por precio descendente 
+Select * from products
+where products.product_name LIKE '%Ladies%'
+order by list_price ASC
+
+--Consulta - reporte con la cantidad de productos de cada categoría, ordenado de mayor a menor cantidad
+select b.category_id, b.category_name, count(c.quantity)
+from products as a
+join categories as b 
+on a.category_id = b.category_id
+join stocks as c
+on a.product_id = c.product_id
+where c.store_id = 1
+group by b.category_id, b.category_name
+ORDER  BY count DESC;
+
+-- Consulta -- reporte con la cantidad de inventario de productos por marca, ordenado descendentemente
+
+select a.brand_id, b.brand_name, sum(c.quantity)
+from products as a
+join brands as b 
+on a.brand_id = b.brand_id
+full join stocks as c
+on a.product_id = c.product_id
+group by a.brand_id, b.brand_name
+ORDER  BY sum DESC;
+
+---consulta 5 -inventario para la tienda Santa Cruz Bike de los productos que tienen en existencia en la categoría Electric Bikes
+
+select a.product_id, a.product_name, b.quantity
+from products as a 
+join stocks as b
+on a.product_id = b.product_id
+join stores as c
+on b.store_id = c.store_id
+join categories as d
+on d.category_id = a.category_id
+where c.store_name ='Santa Cruz Bikes' AND b.quantity > 0 AND d.category_name = 'Electric Bikes'
+
+
+---consulta algoritmo 
+select a.first_name, SUM(c.list_price) as total, count(c.discount) as descuento
+from customers as a
+join orders as b
+on b.customer_id = a.customer_id
+join order_items as c
+on c.order_id = b.order_id
+where a.first_name = 'Debra'
+group by  a.first_name
+
+--------------
+select a.first_name, c.list_price as total, c.discount as descuento from customers as a join orders as b on b.customer_id = a.customer_id join order_items as c on c.order_id = b.order_id where a.first_name = 'Debra'
